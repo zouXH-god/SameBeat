@@ -1,0 +1,20 @@
+{
+  "name": "absolute-sync-music-room",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js --host 0.0.0.0",
+    "test": "node --test",
+    "demo": "node scripts/demo.js",
+    "check": "node --check server/index.js && node --check public/app.js && node --check public/audio.js && node --check public/mv.js && node --check public/mv-background.js && node --check public/mv-video-loop.js && node --check public/mv-typography.js && node --check public/rgba-picker.js && node --check shared/mv.js"
+  },
+  "dependencies": {
+    "jieba-wasm": "^2.4.0",
+    "ws": "^8.18.0"
+  }
+}

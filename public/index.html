@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#F7F2E8"><title>同频 · 绝对同步音乐室</title><link rel="icon" type="image/png" href="/assets/favicon.png"><link rel="preload" as="image" href="/assets/forest.webp"><link rel="preload" as="image" href="/assets/mascot.webp"><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/mv.css"><link rel="stylesheet" href="/theme.css"></head>
+<body>
+  <header class="topbar"><a class="brand" href="/" aria-label="同频首页"><img class="brand-portrait" src="/assets/avatar.webp" width="44" height="44" alt="">同频 <span class="brand-en">SYNC ROOM</span></a><span class="top-note">让每一个声音，在同一刻发生。</span><span class="connection"><i id="connection-dot"></i><span id="connection-text">未连接</span></span></header>
+  <main>
+    <section id="lobby" class="lobby">
+      <div class="intro"><span class="eyebrow"><i class="little-flower" aria-hidden="true">✳</i> A SHARED MOMENT IN MUSIC</span><h1>相隔再远，<br>也能<span>一起听。</span></h1><p>一个房间，一条时间轴。<br>让伴奏、人声和歌词，在每台设备上同频共振。</p><div class="intro-tags"><span>双音轨混音</span><span>实时同步</span><span>歌词跟随</span></div><div class="storybook-art"><img class="forest-scene" src="/assets/forest.webp" width="1200" height="800" alt="" fetchpriority="high"><img class="hero-mascot" src="/assets/mascot.webp" width="640" height="640" alt="金橙短发、猫耳、粉色绒领外套的女孩，微笑着陪你一起听歌" fetchpriority="high"><span class="scene-caption">DIFFERENT PLACES. SAME BEAT.</span><span class="scene-note" aria-hidden="true">♬</span></div></div>
+      <div class="entry-card"><img class="card-botanical" src="/assets/botanical.webp" width="480" height="320" alt="" loading="lazy"><span class="eyebrow">YOUR LISTENING SPACE</span><h2>开启一段共同的旋律</h2><label for="nickname">你的称呼</label><input id="nickname" maxlength="30" placeholder="例如：释然" autocomplete="nickname"><form id="create-form"><label for="room-name">房间名称</label><input id="room-name" maxlength="60" placeholder="今晚，一起听歌"><button class="primary full" type="submit">创建音乐室 <span>↗</span></button></form><div class="divider"><span>或加入朋友的音乐室</span></div><form id="join-form" class="join-row"><input id="room-code" maxlength="6" aria-label="房间编号" placeholder="输入 6 位房间编号" required><button type="submit" class="secondary">加入 →</button></form><p class="hint">音频在各设备本地播放，房间共享播放时间，混音比例由各设备自行配置。</p></div>
+    </section>
+    <section id="studio" hidden>
+      <div class="room-heading"><div><span class="eyebrow">THE LISTENING ROOM</span><h1 id="room-title">音乐室</h1><div class="room-meta"><span id="role-label"></span><span class="mono" id="room-id"></span><span id="member-count"></span></div></div><div class="heading-actions"><button id="share" class="secondary">↗ 分享房间</button><button id="leave" class="quiet">退出</button><button id="close-room" class="quiet danger" hidden>关闭房间</button></div></div>
+      <div class="studio-grid"><div class="main-column">
+        <section class="panel player"><div class="panel-top"><span class="eyebrow">ONE TIMELINE. ALL IN SYNC.</span><span id="play-status" class="badge">已停止</span></div><div class="player-center"><div class="player-art"><img class="player-cover" src="/assets/listening.webp" width="320" height="320" alt="戴耳机聆听的女孩" loading="lazy"><div class="mini-record" id="disc" aria-hidden="true"><span>♪</span></div></div><div class="now-playing"><span class="eyebrow">NOW PLAYING</span><h2 id="song-title">等待第一首音乐</h2><p id="song-subtitle">上传伴奏或人声，开启共同的聆听时刻</p></div><div class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div><input id="progress" type="range" min="0" max="1" value="0" step="1" aria-label="播放进度"><div class="time-row"><span id="position" class="mono">00:00</span><span id="duration" class="mono">00:00</span></div><div class="transport"><div><button id="stop" class="icon-button" title="停止" aria-label="停止">■</button><button id="play" class="play-button" aria-label="播放">▶</button><button id="resync" class="icon-button" title="重新对齐" aria-label="重新对齐">↻</button></div><button id="enable-audio" class="secondary">♬ 启用声音</button></div><p id="player-note" class="hint">首次聆听需要启用声音，才能加入同步播放。</p></section>
+        <section class="panel mixer"><div class="section-title"><div><span class="eyebrow">MAKE IT YOUR MIX</span><h2>双轨混音台</h2></div><span class="muted">仅此设备 · 独立配置</span></div><div class="presets"><button data-preset="1,1">原曲混合</button><button data-preset="1,0">纯伴奏</button><button data-preset="1,0.3">半伴唱</button><button data-preset="0,1">人声独奏</button></div><div id="track-list"></div><div class="local-volume"><span>◖ 本机音量 <small>仅影响此设备</small></span><input id="local-volume" type="range" min="0" max="1" step="0.01" value="0.75" aria-label="本机音量"><span id="local-volume-value" class="mono">75%</span></div></section>
+        <section class="panel members-panel"><div class="section-title"><h2>一起聆听</h2><span id="ready-count" class="muted"></span></div><div id="members"></div></section>
+      </div><aside class="side-column">
+        <section class="panel lyrics-panel"><div class="section-title"><div><span class="eyebrow">WORDS IN TIME</span><h2>此刻的歌词</h2></div><button id="mv-open" class="secondary mv-open">歌词 MV</button><label class="upload-small" id="lyric-upload-label">＋ LRC<input id="lyric-upload" type="file" accept=".lrc,.txt" class="upload-input"></label></div><div id="lyrics" class="lyrics"><div class="empty-lyrics"><img src="/assets/waiting.webp" width="320" height="320" alt="" loading="lazy"><p>让文字跟上旋律</p><small>上传 LRC 歌词后，<br>会随房间时间轴自动滚动。</small></div></div><div class="lyric-footer"><span id="lyric-name">尚未上传歌词</span><label>偏移 <input id="lyric-offset" type="number" min="-10000" max="10000" step="50" value="0" aria-label="歌词偏移毫秒"> ms</label></div><div class="lyric-lead-control"><label>视觉提前 <input id="lyric-lead" type="number" min="-1000" max="1000" step="50" value="200" aria-label="歌词视觉提前毫秒" title="正数提前，负数延后"> ms</label><small>仅此设备 · 音频时间不变</small></div></section>
+        <section class="panel sync-panel"><span class="eyebrow">CONNECTED BY THE SAME CLOCK</span><h2><i class="live-dot"></i> 同步状态</h2><div class="metrics"><div><span>网络往返</span><strong id="rtt">—<small> ms</small></strong></div><div><span>播放偏差估计</span><strong id="drift">—<small> ms</small></strong></div></div><div class="sync-bottom"><span id="sync-detail">等待时钟校准</span><span id="revision" class="mono">v0</span></div><p class="hint">偏差为软件估计值。设备输出延迟和网络波动会影响实际发声同步。</p></section>
+      </aside></div>
+    </section>
+    <footer><span>同频 · 绝对同步音乐室</span><span>一个房间，两条音轨，无数个共同的瞬间。</span></footer>
+  </main>
+  <section id="lyric-mv" class="lyric-mv" role="dialog" aria-modal="true" aria-label="歌词动画 MV" tabindex="-1" hidden>
+    <div class="mv-background" aria-hidden="true"><img alt="" hidden><video muted loop playsinline preload="metadata" hidden></video><div class="mv-background-mask"></div></div>
+    <header class="mv-toolbar"><div><span class="mv-label">同频 / LYRIC MV</span><span class="mv-song"></span></div><div class="mv-actions"><label class="mv-font">字体 <select id="mv-font" aria-label="歌词 MV 字体" title="使用本机字体，未安装时使用备用字体"></select></label><button id="mv-typography-toggle" aria-expanded="false" aria-controls="mv-typography-settings">文字样式</button><button id="mv-background-toggle" aria-expanded="false" aria-controls="mv-background-settings">背景</button><button id="mv-play" aria-label="MV 播放">▶ 播放</button><button id="mv-fullscreen">⛶ 全屏</button><label class="mv-lead">提前 <input id="mv-lyric-lead" type="number" min="-1000" max="1000" step="50" value="200" aria-label="MV 视觉提前毫秒" title="正数提前，负数延后"> ms</label><button id="mv-close" aria-label="关闭歌词 MV">× 关闭</button></div></header>
+    <aside id="mv-background-settings" class="mv-background-panel" aria-label="MV 背景设置" hidden>
+      <div class="mv-background-heading"><h2>背景设置</h2><button id="mv-background-done" aria-label="关闭背景设置">完成</button></div>
+      <label>背景类型<select id="mv-background-type"><option value="color">色彩</option><option value="image">图片</option><option value="video">视频</option></select></label>
+      <div id="mv-background-color" data-rgba-label="背景色彩"></div>
+      <label class="mv-background-file" hidden>选择本地文件<input id="mv-background-file" type="file" accept="image/*"></label>
+      <p id="mv-background-name">设置仅影响本机</p>
+      <div class="mv-background-video-options" hidden><label>无限循环（正放 → 倒放 → 正放）<input id="mv-background-ping-pong" type="checkbox"></label></div>
+      <div id="mv-background-overlay" data-rgba-label="背景遮罩"></div>
+      <p>图片与视频铺满画面，视频静音循环播放。背景保存在本机，不上传到房间。</p>
+      <button id="mv-background-reset">恢复黑色背景</button>
+    </aside>
+    <aside id="mv-typography-settings" class="mv-background-panel mv-typography-panel" aria-label="MV 文字样式" hidden>
+      <div class="mv-background-heading"><h2>文字样式</h2><button id="mv-typography-done" aria-label="关闭文字样式">完成</button></div>
+      <fieldset><legend>字号与排版</legend>
+        <label>最小字号（px）<input data-typography="minSize" type="number" min="8" max="200" step="1" value="28"></label>
+        <label>最大字号（px）<input data-typography="maxSize" type="number" min="8" max="200" step="1" value="72"></label>
+        <label>行间距（px）<input data-typography="lineGap" type="number" min="0" max="120" step="1" value="32"></label>
+        <p>字号用于主歌词的词语大小编排。长句及小屏自动缩放，预览保持相同比例。</p>
+      </fieldset>
+      <fieldset><legend>文本偏移</legend>
+        <label>文本 X 偏移（px）<input data-typography="offsetX" type="number" min="-4000" max="4000" step="1" value="0"></label>
+        <label>文本 Y 偏移（px）<input data-typography="offsetY" type="number" min="-4000" max="4000" step="1" value="0"></label>
+        <p>以歌词区域中心为原点。X 正值向右、负值向左；Y 正值向下、负值向上。主歌词和预览一起移动。</p>
+        <button id="mv-offset-reset">偏移归零</button>
+      </fieldset>
+      <div data-rgba-setting="color" data-rgba-label="字体颜色"></div>
+      <fieldset><legend>字体阴影</legend>
+        <label>启用阴影<input data-typography="shadowEnabled" type="checkbox" checked></label>
+        <details><summary>阴影颜色、模糊与偏移</summary>
+          <div data-rgba-setting="shadowColor" data-rgba-label="阴影颜色"></div>
+          <label>模糊半径（px）<input data-typography="shadowBlur" type="number" min="0" max="60" step="1" value="14"></label>
+          <label>水平偏移（px）<input data-typography="shadowX" type="number" min="-40" max="40" step="1" value="0"></label>
+          <label>垂直偏移（px）<input data-typography="shadowY" type="number" min="-40" max="40" step="1" value="2"></label>
+        </details>
+      </fieldset>
+      <fieldset><legend>字体描边</legend>
+        <label>启用描边<input data-typography="strokeEnabled" type="checkbox"></label>
+        <div data-rgba-setting="strokeColor" data-rgba-label="描边颜色"></div>
+        <label>描边宽度（px）<input data-typography="strokeWidth" type="number" min="0" max="6" step="0.5" value="1"></label>
+      </fieldset>
+      <button id="mv-typography-reset">恢复默认文字样式</button>
+      <p>即时预览，仅保存在本机，不影响其他成员。</p>
+    </aside>
+    <div class="mv-stage" aria-live="off"></div>
+    <footer class="mv-footer"><span class="mv-status">上传 LRC 歌词，开始制作歌词 MV</span><span class="mv-style-label">两行主歌词 · 下段预览</span></footer>
+  </section>
+  <div id="toast" role="status" aria-live="polite" hidden></div><script type="module" src="/app.js"></script>
+</body></html>

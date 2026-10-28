@@ -1,0 +1,30 @@
+{
+  "generator": "Built-in image_gen",
+  "reference": "25b2e7e4b5ed3dff56f9f7ef0e1ed668.png",
+  "assets": [
+    {
+      "name": "mascot",
+      "prompt": "Use case: identity-preserve. Asset: transparent full-body seated mascot for a gentle illustrated music website. Reference image is the supplied girl: preserve her youthful chibi proportions, golden orange short bob with bangs, large cream-and-pink cat ears, rose pink eyes, rosy cheeks, dusty pink coat with white fluffy collar and pompom ties, dark skirt. Extract and redraw the same character seated, knees together, both hands resting on her knees, warm open smile. Complete ears, hair, hands and shoes inside the frame with generous transparent padding. Soft watercolor and colored-pencil anime storybook illustration, muted cream / honey / dusty rose colors, delicate warm brown outlines, matching reference texture. Only the character, no bench, no scenery, no ground shadow, no lettering, no watermark. Actual transparent background."
+    },
+    {
+      "name": "forest",
+      "prompt": "Use case: illustration-story. Asset: wide 3:2 forest scene background for a music website. Use supplied image as STYLE AND ENVIRONMENT reference only. Redraw the quiet sunlit woodland with a rustic empty wooden bench in lower center, soft trees, sage green leaves, little white daisies around the edges, honey-colored sunlight through foliage. Absolutely NO girl, NO people, NO animals, NO text. Muted watercolor/colored-pencil storybook texture, warm cream highlights, olive gray greens, dusty warm browns. Gentle spacious composition with soft detail in center, matching the provided picture. Landscape image, full bleed."
+    },
+    {
+      "name": "avatar",
+      "prompt": "Use case: identity-preserve. Asset: square character portrait for a music website brand icon. Redraw the SAME girl from reference with golden-orange short bob and bangs, full cream-and-pink cat ears, rose pink eyes, blush, dusty pink coat with white fluffy collar. Preserve age and chibi proportions. Friendly soft closed-mouth smile. Centered head and shoulders, ears fully visible with 12 percent margin, legible silhouette at tiny size. Cream paper background with very subtle sage green wash. Soft muted watercolor/colored-pencil storybook anime style matching reference. No text, no logo, no watermark."
+    },
+    {
+      "name": "listening",
+      "prompt": "Use case: identity-preserve. Asset: square music player cover illustration. Same youthful chibi catgirl from reference: golden orange bob hair, full cream pink cat ears, rose pink eyes, dusty pink coat, white fluffy collar and pompom ties. She wears simple cream over-ear headphones sitting below her cat ears, one hand gently holding an earcup, serene happy smile, eyes gently open. Head and upper torso fully within frame, ears not cut off. Sage and cream watercolor woodland background, little soft light spots. Delicate hand drawn watercolor colored pencil anime storybook, muted warm palette, no text, no watermark. Preserve reference age, face, outfit."
+    },
+    {
+      "name": "waiting",
+      "prompt": "Use case: identity-preserve. Asset: transparent empty-state illustration for lyrics panel. Same youthful chibi girl as reference: golden orange short bob with bangs, cream pink cat ears, rose pink eyes, dusty pink coat with white fluffy collar and pompom ties, dark skirt. Small seated figure, three-quarter view, hands folded on knees, calm gentle closed-mouth smile, patiently waiting. Full ears, entire seated body, hands and shoes visible, generous padding. Soft watercolor colored pencil anime storybook texture, low saturation warm cream and dusty pink. Only one girl, no bench, no scenery, no props, no shadow, no text, no watermark. Actual transparent background. Preserve reference identity and age."
+    },
+    {
+      "name": "botanical",
+      "prompt": "Use case: illustration-story. Asset: transparent botanical corner decoration for warm storybook music website. Use attached picture only as illustration style and foliage color reference. One graceful loose curved sprig of muted sage-green woodland leaves and five small white daisies with honey yellow centers, delicate stems, organic asymmetry, wide 3:2 composition with plenty of transparent empty space around it. Soft watercolor and colored-pencil texture, subdued olive and cream palette matching the reference forest, fine warm brown outlines. Botanical elements only, NO girl, NO people, NO background, NO lettering, NO watermark. Actual transparent background."
+    }
+  ]
+}

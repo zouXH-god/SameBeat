@@ -1,0 +1,20 @@
+# Dependencies and local cache
+node_modules/
+.npm-cache/
+
+# Runtime state, uploads and generated demo audio
+/data/
+
+# Local recordings, promotional media and verification artifacts
+/artifacts/
+/test/data/
+
+# Local secrets and machine-specific files
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
